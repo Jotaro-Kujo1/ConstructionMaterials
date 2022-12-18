@@ -24,8 +24,8 @@ public class ThermalInsulationService {
         return repository.save(thermalInsulation);
     }
 
-    public void deleteThermalInsulation(ThermalInsulation thermalInsulation) {
-        repository.delete(thermalInsulation);
+    public void deleteThermalInsulationByName(String name) {
+        repository.deleteByName(name);
     }
 
     public List<ThermalInsulation> findAll() {
@@ -38,7 +38,7 @@ public class ThermalInsulationService {
 
     public List<ThermalInsulation> ascByNameSort() {
         return findAll().stream()
-                .sorted((o1,o2) -> o2.getName().compareTo(o1.getName()))
+                .sorted((o1,o2) -> o1.getName().compareTo(o2.getName()))
                 .collect(Collectors.toList());
     }
 }

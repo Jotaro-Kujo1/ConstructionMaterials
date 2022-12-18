@@ -35,14 +35,14 @@ public class SolutionController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping(value = "/deleteSolution")
-    public ResponseEntity<Metal> deleteSolution(@RequestBody Solution solution){
-        service.deleteSolution(solution);
+    @DeleteMapping(value = "/deleteSolution/{name}")
+    public ResponseEntity<Metal> deleteSolution(@PathVariable String name){
+        service.deleteSolutionByName(name);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/getSolution")
-    public ResponseEntity<Solution> getSolution(@RequestParam String name) {
+    @GetMapping(value = "/getSolution/{name}")
+    public ResponseEntity<Solution> getSolution(@PathVariable String name) {
         return ResponseEntity.ok(service.findByName(name));
     }
 

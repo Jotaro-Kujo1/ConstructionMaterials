@@ -34,14 +34,14 @@ public class NaturalController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping(value = "/deleteNatural")
-    public ResponseEntity<Metal> deleteNatural(@RequestBody Natural natural){
-        service.deleteNatural(natural);
+    @DeleteMapping(value = "/deleteNatural/{name}")
+    public ResponseEntity<Metal> deleteNatural(@PathVariable String name){
+        service.deleteNaturalByName(name);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/getNatural")
-    public ResponseEntity<Natural> getNatural(@RequestParam String name) {
+    @GetMapping(value = "/getNatural/{name}")
+    public ResponseEntity<Natural> getNatural(@PathVariable String name) {
         return ResponseEntity.ok(service.findByName(name));
     }
 

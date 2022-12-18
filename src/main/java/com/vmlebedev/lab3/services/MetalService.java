@@ -27,6 +27,10 @@ public class MetalService {
         repository.delete(metal);
     }
 
+    public void deleteMetalByName(String name) {
+        repository.deleteByName(name);
+    }
+
     public List<Metal> findAll() {
         return (List<Metal>) repository.findAll();
     }
@@ -37,7 +41,7 @@ public class MetalService {
 
     public List<Metal> ascByNameSort() {
         return findAll().stream()
-                .sorted((o1,o2) -> o2.getName().compareTo(o1.getName()))
+                .sorted((o1,o2) -> o1.getName().compareTo(o2.getName()))
                 .collect(Collectors.toList());
     }
 }

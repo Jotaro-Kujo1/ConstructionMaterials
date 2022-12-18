@@ -24,7 +24,7 @@ public class ThermalInsulationController {
         this.service = service;
     }
 
-    @PostMapping(value = "/saveSolution")
+    @PostMapping(value = "/saveThermalInsulation")
     public ResponseEntity<?> saveThermalInsulation(@RequestBody ThermalInsulation thermalInsulation){
         ThermalInsulation newThermalInsulation = service.saveThermalInsulation(thermalInsulation);
         URI location = ServletUriComponentsBuilder
@@ -35,14 +35,14 @@ public class ThermalInsulationController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping(value = "/deleteThermalInsulation")
-    public ResponseEntity<Metal> deleteThermalInsulation(@RequestBody ThermalInsulation thermalInsulation){
-        service.deleteThermalInsulation(thermalInsulation);
+    @DeleteMapping(value = "/deleteThermalInsulation/{name}")
+    public ResponseEntity<Metal> deleteThermalInsulation(@PathVariable String name){
+        service.deleteThermalInsulationByName(name);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/getThermalInsulation")
-    public ResponseEntity<ThermalInsulation> getThermalInsulation(@RequestParam String name) {
+    @GetMapping(value = "/getThermalInsulation/{name}")
+    public ResponseEntity<ThermalInsulation> getThermalInsulation(@PathVariable String name) {
         return ResponseEntity.ok(service.findByName(name));
     }
 

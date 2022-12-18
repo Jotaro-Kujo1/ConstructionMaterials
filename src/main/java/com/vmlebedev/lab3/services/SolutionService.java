@@ -24,8 +24,8 @@ public class SolutionService {
         return repository.save(solution);
     }
 
-    public void deleteSolution(Solution solution) {
-        repository.delete(solution);
+    public void deleteSolutionByName(String name) {
+        repository.deleteByName(name);
     }
 
     public List<Solution> findAll() {
@@ -38,7 +38,7 @@ public class SolutionService {
 
     public List<Solution> ascByNameSort() {
         return findAll().stream()
-                .sorted((o1,o2) -> o2.getName().compareTo(o1.getName()))
+                .sorted((o1,o2) -> o1.getName().compareTo(o2.getName()))
                 .collect(Collectors.toList());
     }
 }

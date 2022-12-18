@@ -34,14 +34,14 @@ public class MetalController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping(value = "/deleteMetal")
-    public ResponseEntity<Metal> deleteMetal(@RequestBody Metal metal){
-        service.deleteMetal(metal);
+    @DeleteMapping(value = "/deleteMetal/{name}")
+    public ResponseEntity<Metal> deleteMetal(@PathVariable String name){
+        service.deleteMetalByName(name);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/getMetal")
-    public ResponseEntity<Metal> getMetal(@RequestParam String name) {
+    @GetMapping(value = "/getMetal/{name}")
+    public ResponseEntity<Metal> getMetal(@PathVariable String name) {
         return ResponseEntity.ok(service.findByName(name));
     }
 

@@ -33,14 +33,14 @@ public class ConcreteController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping(value = "/deleteConcrete")
-    public ResponseEntity<Concrete> deleteConcrete(@RequestBody Concrete concrete){
-        service.deleteConcrete(concrete);
+    @DeleteMapping(value = "/deleteConcrete/{name}")
+    public ResponseEntity<Concrete> deleteConcrete(@PathVariable String name){
+        service.deleteConcreteByName(name);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/getConcrete")
-    public ResponseEntity<Concrete> getConcrete(@RequestParam String name) {
+    @GetMapping(value = "/getConcrete/{name}")
+    public ResponseEntity<Concrete> getConcrete(@PathVariable String name) {
         return ResponseEntity.ok(service.findByName(name));
     }
 

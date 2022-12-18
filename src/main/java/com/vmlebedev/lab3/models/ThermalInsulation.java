@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Data
-@Table(schema = "public", name = "thermalInsulation")
+@Table(schema = "public", name = "thermal_insulation")
 public class ThermalInsulation {
     @Id
     @GeneratedValue(generator = "system-uuid")

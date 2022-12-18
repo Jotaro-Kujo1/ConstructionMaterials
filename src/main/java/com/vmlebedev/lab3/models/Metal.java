@@ -19,5 +19,5 @@ public class Metal {
     private String name;
     private String hardness;
     private String meltingTemperature;
-    private boolean electricalConductivity;
+    private String electricalConductivity;
 }

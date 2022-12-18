@@ -23,8 +23,8 @@ public class NaturalService {
         return repository.save(natural);
     }
 
-    public void deleteNatural(Natural natural) {
-        repository.delete(natural);
+    public void deleteNaturalByName(String name) {
+        repository.deleteByName(name);
     }
 
     public List<Natural> findAll() {
@@ -37,7 +37,7 @@ public class NaturalService {
 
     public List<Natural> ascByNameSort() {
         return findAll().stream()
-                .sorted((o1,o2) -> o2.getName().compareTo(o1.getName()))
+                .sorted((o1,o2) -> o1.getName().compareTo(o2.getName()))
                 .collect(Collectors.toList());
     }
 }

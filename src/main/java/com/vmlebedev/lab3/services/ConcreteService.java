@@ -22,8 +22,8 @@ public class ConcreteService {
         return repository.save(concrete);
     }
 
-    public void deleteConcrete(Concrete concrete) {
-        repository.delete(concrete);
+    public void deleteConcreteByName(String name) {
+        repository.deleteByName(name);
     }
 
     public List<Concrete> findAll() {
@@ -36,7 +36,7 @@ public class ConcreteService {
 
     public List<Concrete> ascByNameSort() {
         return findAll().stream()
-                .sorted((o1,o2) -> o2.getName().compareTo(o1.getName()))
+                .sorted((o1,o2) -> o1.getName().compareTo(o2.getName()))
                 .collect(Collectors.toList());
     }
 }
